@@ -25,7 +25,7 @@ class App extends Component {
     const data = await api_call.json();
     console.log(data);
 
-    if (city && country){
+    if (city && country && !data.message){
     this.setState({
       temperature: data.main.temp,
 
@@ -43,7 +43,7 @@ class App extends Component {
         country: undefined,
         humidity: undefined,
         description: undefined,
-        error: 'Please enter the values'
+        error: 'Please enter Valid Input'
 
         })
 
@@ -59,11 +59,11 @@ class App extends Component {
             <div className="container">
               <div className="row">
 
-                <div className="col-xs-5 title-container">
+                <div className="col-xs-6 title-container">
                   <Titles/>
                 </div>
 
-                <div className="col-xs-7 form-container">
+                <div className="col-xs-6 form-container">
                 <Form getWeather = {this.getWeather}/>
                 <Weather temperature={this.state.temperature}
                 city={this.state.city}
@@ -73,7 +73,7 @@ class App extends Component {
                 error={this.state.error}
                 />
                 </div>
-                
+
               </div>
             </div>
           </div>
